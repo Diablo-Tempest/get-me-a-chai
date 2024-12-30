@@ -3,6 +3,11 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Description
 Get Me A Chai is a platform where creators can connect with their supporters and receive financial support for their work.
 
+## technologies
+1. Next.js
+2. NextAuth.js
+3. MongoDB
+
 ## Getting Started
 
 First, run the development server:
