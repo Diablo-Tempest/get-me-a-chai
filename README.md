@@ -6,7 +6,8 @@ Get Me A Chai is a platform where creators can connect with their supporters and
 ## technologies
 1. Next.js
 2. NextAuth.js
-3. MongoDB
+3. Javascript
+4. MongoDB
 
 ## Getting Started
 
