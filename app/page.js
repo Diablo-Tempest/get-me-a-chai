@@ -1,101 +1,55 @@
+"use client"
 import Image from "next/image";
-
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 export default function Home() {
+  const {data: session} = useSession()
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="divide-y-2 divide-slate-800">
+      <div className="flex flex-col justify-center items-center h-[50vh]">
+        <div className="font-bold text-5xl flex justify-center items-center"><span>Buy me a chai</span> <span><Image unoptomized="true" src='/tea.gif' alt="logo" width={100} height={100} /></span></div>
+        <div className="flex flex-col items-center">
+          <p>A crowd funding platform for creators. Get funded by your fans and followers. Start now!</p>
+          <div>
+            <Link href={session?`/${session.user.name}`:"/login"}>
+            <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white focus:outline-none">
+              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 text-white rounded-md group-hover:bg-opacity-0">Start here</span>
+            </button>
+            </Link>
+            <Link href={"/about"}>
+            <button className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500">
+              <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 text-white rounded-md group-hover:bg-opacity-0">Read more</span>
+            </button>
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+      <div className="text-white container mx-auto my-5">
+        <h2 className="text-2xl font-bold text-center my-10">Your fans can buy you a chai</h2>
+        <div className="flex gap-5 justify-around">
+          <div className="flex flex-col justify-center items-center item space-y-3 w-1/3">
+            <Image unoptomized="true" className="bg-slate-400 rounded-full p-5" src="/man.gif" alt="" width={100} height={100} />
+            <p className="font-bold">Fund Yourself</p>
+            <p className="text-center">Your fans are available for you to help</p>
+          </div>
+          <div className="flex flex-col justify-center items-center item space-y-3 w-1/3">
+            <Image unoptomized="true" className="bg-slate-400 rounded-full p-5" src="/coin.gif" alt="" width={100} height={100} />
+            <p className="font-bold">Fund Yourself</p>
+            <p className="text-center">Your fans are available for you to help</p>
+          </div>
+          <div className="flex flex-col justify-center items-center item space-y-3 w-1/3">
+            <Image unoptomized="true" className="bg-slate-400 rounded-full p-5" src="/group.gif" alt="" width={100} height={100} />
+            <p className="font-bold">Fans wants to help</p>
+            <p className="text-center">Your fans are available for you to help</p>
+          </div>
+        </div>
+      </div>
+      <div className="text-white container mx-auto">
+        <h2 className="text-2xl font-bold text-center my-10">Learn more about Us</h2>
+        <div className="flex gap-5 justify-around">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=XUexQXfEjVEKyq9M" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        </div>
+      </div>
     </div>
   );
 }
