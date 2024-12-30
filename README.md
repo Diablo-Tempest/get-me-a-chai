@@ -1,5 +1,8 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Description
+Get Me A Chai is a platform where creators can connect with their supporters and receive financial support for their work.
+
 ## Getting Started
 
 First, run the development server:
